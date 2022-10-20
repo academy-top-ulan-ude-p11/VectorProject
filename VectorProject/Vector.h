@@ -17,7 +17,6 @@ public:
 			for (int i = 0; i < this->size; i++)
 				array[i] = vobj.array[i];
 		}
-			
 	}
 
 	~Vector()
@@ -32,5 +31,24 @@ public:
 
 	int& At(int index);
 	int& operator[](int index);
+
+	Vector& operator=(const Vector& vobj)
+	{
+		if (this == &vobj)
+			return *this;
+
+		if (this->array)
+			delete[]this->array;
+
+		this->size = vobj.size;
+		if (this->size)
+		{
+			array = new int[this->size];
+			for (int i = 0; i < this->size; i++)
+				array[i] = vobj.array[i];
+		}
+
+		return *this;
+	}
 };
 

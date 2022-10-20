@@ -12,7 +12,16 @@ int main()
         std::cout << vector.At(i) << " ";
     std::cout << "\n";
 
-    Vector vector2 = vector;
+    Vector vector2(vector);
+    Vector vector3;
+    //
+    //
+
+    vector3 = vector;
+
+    
+
+    
 
     return 0;
 }
