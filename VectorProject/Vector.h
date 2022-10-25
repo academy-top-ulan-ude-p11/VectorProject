@@ -1,19 +1,26 @@
 #pragma once
+
+template <class T>
 class Vector
 {
 	int size;
-	int* array = nullptr;
+	int capacity;
+	T* array = nullptr;
 public:
+	template <class T>
 	Vector(int size = 0) : size{ size }
 	{
+		capacity = size;
 		if (size)
-			array = new int[size] {};
+			array = new T[capacity] {};
 	}
-	Vector(const Vector& vobj) : size{ vobj.size }
+
+	template <class T>
+	Vector(const Vector<T>& vobj) : size{ vobj.size }, capacity{ vobj.capacity }
 	{
 		if (this->size)
 		{
-			array = new int[this->size];
+			array = new T[this->capacity] {};
 			for (int i = 0; i < this->size; i++)
 				array[i] = vobj.array[i];
 		}
@@ -26,29 +33,25 @@ public:
 	}
 
 	int Size() const;
-	void SetItem(int index, int value);
-	int GetItem(int index);
+	int Capacity() const;
 
-	int& At(int index);
-	int& operator[](int index);
+	template <class T>
+	void SetItem(int index, T value);
+	template <class T>
+	T GetItem(int index);
 
-	Vector& operator=(const Vector& vobj)
-	{
-		if (this == &vobj)
-			return *this;
+	template <class T>
+	T& At(int index);
 
-		if (this->array)
-			delete[]this->array;
+	template <class T>
+	T& operator[](int index);
 
-		this->size = vobj.size;
-		if (this->size)
-		{
-			array = new int[this->size];
-			for (int i = 0; i < this->size; i++)
-				array[i] = vobj.array[i];
-		}
 
-		return *this;
-	}
+	Vector<T>& operator=(const Vector& vobj);
+
+	void PushBack(int value);
+	void Insert(int value, int index);
+
+	int PopBack();
+	int Remove(int index);
 };
-
