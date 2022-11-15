@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="OldCode.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VectorProject.cpp" />
   </ItemGroup>

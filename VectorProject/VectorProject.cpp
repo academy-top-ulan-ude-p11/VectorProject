@@ -1,84 +1,39 @@
 ﻿#include <iostream>
 #include "Vector.h"
 
+using namespace std;
+
+class User
+{
+    string name;
+public:
+    User() : name{ "" } {}
+    User(string name) : name{ name } {}
+    string GetName() { return name; }
+};
+
 int main()
 {
     srand(time(nullptr));
 
-    /*Vector vector(5);
-    for (int i = 0; i < vector.Size(); i++)
-        vector[i] = rand() % 100;
-    for (int i = 0; i < vector.Size(); i++)
-        std::cout << vector[i] << " ";
+    Vector<int> v1;
+    v1.PushBack(100);
+    v1.PushBack(200);
+    v1.PushBack(300);
+    v1.Insert(500, 1);
+
+    for (int i = 0; i < v1.Size(); i++)
+        std::cout << v1[i] << " ";
     std::cout << "\n";
 
-    for (int i = 0; i < 100; i++)
-        vector.PushBack(rand() % 100);
+    Vector<User> users;
+    users.PushBack(User("Bob"));
+    users.PushBack(User("Joe"));
+    users.PushBack(User("Tim"));
 
-    for (int i = 0; i < vector.Size(); i++)
-        std::cout << vector[i] << " ";
-    std::cout << "\n";*/
-
-
-    Vector<int> v0;
-    v0.PushBack(rand() % 100);
-
-    /*for (int i = 0; i < 15; i++)
-    {
-        std::cout << "capacity = " << v0.Capacity()
-            << " size = " << v0.Size() << "\n";
-
-        for (int i = 0; i < v0.Size(); i++)
-            std::cout << v0[i] << " ";
-
-        v0.PushBack(rand() % 100);
-
-        std::cout << "\n";
-    }
-
-    for (int i = 0; i < v0.Size(); i++)
-        std::cout << v0[i] << " ";
-    std::cout << "\n\n";
-
-    for (int i = 0; i < 15; i++)
-    {
-        std::cout << "capacity = " << v0.Capacity()
-            << " size = " << v0.Size() << "\n";
-        std::cout << "pop from back = " << v0.PopBack() << "\n";
-        for (int i = 0; i < v0.Size(); i++)
-            std::cout << v0[i] << " ";
-
-        std::cout << "\n";
-    }*/
-
-    for (int i = 0; i < 15; i++)
-    {
-        std::cout << "capacity = " << v0.Capacity()
-            << " size = " << v0.Size() << "\n";
-
-        for (int i = 0; i < v0.Size(); i++)
-            std::cout << v0[i] << " ";
-
-        v0.Insert(rand() % 100, 1);
-
-        std::cout << "\n";
-    }
-
-    for (int i = 0; i < v0.Size(); i++)
-        std::cout << v0[i] << " ";
-    std::cout << "\n\n";
-
-    for (int i = 0; i < 15; i++)
-    {
-        std::cout << "capacity = " << v0.Capacity()
-            << " size = " << v0.Size() << "\n";
-        std::cout << "pop from back = " << v0.Remove(1) << "\n";
-        for (int i = 0; i < v0.Size(); i++)
-            std::cout << v0[i] << " ";
-
-        std::cout << "\n";
-    }
-    
+    for (int i = 0; i < users.Size(); i++)
+        std::cout << users[i].GetName() << " ";
+    std::cout << "\n";
 
     return 0;
 }
